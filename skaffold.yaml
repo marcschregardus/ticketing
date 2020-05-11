@@ -6,13 +6,13 @@ deploy:
       - ./infra/k8s/*
 build:
   # Can only be local or googleCloudBuild
-#  local:
-#    push: false
-  googleCloudBuild:
-    projectId: marc-ticketing-dev
+  local:
+    push: false
+#  googleCloudBuild:
+#    projectId: marc-ticketing-dev
   artifacts:
-#    - image: mschregardus/auth
-    - image: us.gcr.io/marc-ticketing-dev/auth
+#    - image: us.gcr.io/marc-ticketing-dev/auth
+    - image: mschregardus/auth
       context: auth
       docker:
         dockerfile: Dockerfile

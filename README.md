@@ -64,3 +64,19 @@ Then setup NGINX with:
 - This will provide the IP address for ports 80/433 - i.e. `34.87.236.133`
 - edit file `/etc/hosts`
 - add `34.87.236.133 ticketing.dev`
+
+## Update Skaffold
+
+- Uncomment the following in the `skaffold.yaml` file:
+
+```
+googleCloudBuild:
+    projectId: marc-ticketing-dev
+
+- image: us.gcr.io/marc-ticketing-dev/auth
+```
+
+Change the `auth-depl.yaml` (and all other files) to point at the image `us.gcr.io/marc-ticketing-dev/auth`
+
+Now when you run `skaffold dev` the image go to the GCP Container Registry -> Images and the image is run from the 
+machine on GCP rather than locally.
