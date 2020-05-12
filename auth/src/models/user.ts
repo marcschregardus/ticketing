@@ -29,6 +29,15 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     }
+}, {
+    toJSON: {
+        transform(doc, ret) {
+            ret.id = ret._id;
+            delete ret._id;
+            delete ret.password;
+            delete ret.__v; // or set versionKey: false
+        }
+    }
 });
 
 // function rather than arrow so this refers to document
