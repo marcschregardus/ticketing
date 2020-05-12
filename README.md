@@ -30,7 +30,7 @@ To view ingress
 
 To circumnavigate the self signed certificate error in chrome, click anywhere on the page and type `thisisunsafe`
 
-### Developing on Google
+# Developing on Google
 
 - Create project (i.e. `marc-ticketing-dev`)
 - Enable Kubernetes
@@ -80,3 +80,13 @@ Change the `auth-depl.yaml` (and all other files) to point at the image `us.gcr.
 
 Now when you run `skaffold dev` the image go to the GCP Container Registry -> Images and the image is run from the 
 machine on GCP rather than locally.
+
+# Security Setup
+
+- JWT token stored in a cookie (base64 encoded)
+- To decode cookie value, use [https://www.base64decode.org/](https://www.base64decode.org/)
+- To view JWT token, use [https://jwt.io/](https://jwt.io/)
+
+Create the secrets required
+
+`kubectl create secret generic jwt-secret --from-literal=JWT_KEY=asdf`
