@@ -21,7 +21,8 @@ To setup locally (on mac)
 
 To view ingress
 
-`kubectl get ingress`
+- `kubectl get ingress -n ingress-nginx`
+- `kubectl get pods -n ingress-nginx`
 
 ### Update hosts
 
