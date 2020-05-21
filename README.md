@@ -23,6 +23,9 @@ To view ingress
 
 - `kubectl get ingress -n ingress-nginx`
 - `kubectl get pods -n ingress-nginx`
+- `kubectl get services -n ingress-nginx`
+
+_Could user External Name Service for easier name mapping_
 
 ### Update hosts
 
