@@ -107,5 +107,8 @@ Create the secrets required
     - `git commit -m "initial commit"`
 - Login locally (using `npm login`)
 - Publish using `npm publish --access public`
+- To publish this code to git, create a git repo (`ticketing-common` in this case)
+- Add the origin using `git remote add origin git@github.com:marcschregardus/ticketing-common.git`
+- Push using `git push -u origin master`
 
 _Note: to have the repo private, there is a monthly cost associated - $7 per month_
