@@ -110,5 +110,8 @@ Create the secrets required
 - To publish this code to git, create a git repo (`ticketing-common` in this case)
 - Add the origin using `git remote add origin git@github.com:marcschregardus/ticketing-common.git`
 - Push using `git push -u origin master`
+- Semantic versioning can be updated using `npm version patch` (i.e. `1.0.0` -> `1.0.1`)
+- Helper method to add, commit, push, version and publish is `npm run pub`
+- To update projects referencing this, use `npm update @schregardus/common`
 
 _Note: to have the repo private, there is a monthly cost associated - $7 per month_
