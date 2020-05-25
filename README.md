@@ -94,3 +94,18 @@ machine on GCP rather than locally.
 Create the secrets required
 
 `kubectl create secret generic jwt-secret --from-literal=JWT_KEY=asdf`
+
+# NPM Common Repo Setup
+
+- Authenticate on [https://npmjs.com](https://npmjs.com)
+- Create a new Organisation (public) for the user (in this case, `schregardus`)
+- Create a package using `npm init -y`
+- Update the package name to use the org (i.e. `"name": "@schregardus/common"`)
+- Create a local Git repo for the directory to publish. I.e.
+    - `git init`
+    - `git add .`
+    - `git commit -m "initial commit"`
+- Login locally (using `npm login`)
+- Publish using `npm publish --access public`
+
+_Note: to have the repo private, there is a monthly cost associated - $7 per month_
