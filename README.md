@@ -115,3 +115,18 @@ Create the secrets required
 - To update projects referencing this, use `npm update @schregardus/common`
 
 _Note: to have the repo private, there is a monthly cost associated - $7 per month_
+
+# NATS Streaming Server
+
+- [https://docs.nats.io/](https://docs.nats.io/)
+- [https://hub.docker.com/_/nats-streaming](https://hub.docker.com/_/nats-streaming)
+- [https://www.npmjs.com/package/node-nats-streaming](https://www.npmjs.com/package/node-nats-streaming)
+
+## Port forwarding
+
+- Good for a temporary (test) connection to a k8s service
+- Find the nats pod `kubectl get pods`
+- Forward the port using the pod name `kubectl port-forward nats-depl-655c4dbccc-6tzr2 4222:4222`
+- Forward the port using the pod name `kubectl port-forward nats-depl-655c4dbccc-6tzr2 8222:8222`
+- [http://localhost:8222/streaming](http://localhost:8222/streaming)
+- [http://localhost:8222/streaming/channelsz?subs=1](http://localhost:8222/streaming/channelsz?subs=1)
