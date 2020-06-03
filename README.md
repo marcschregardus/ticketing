@@ -130,3 +130,9 @@ _Note: to have the repo private, there is a monthly cost associated - $7 per mon
 - Forward the port using the pod name `kubectl port-forward nats-depl-655c4dbccc-6tzr2 8222:8222`
 - [http://localhost:8222/streaming](http://localhost:8222/streaming)
 - [http://localhost:8222/streaming/channelsz?subs=1](http://localhost:8222/streaming/channelsz?subs=1)
+
+## Reset
+
+- Data in memory, so just list pods and delete nat pod (and skaffold will start it up again). I.e.
+- `kubectl get pods`
+- `kubectl delete pod nats-depl-5b5b8cd86c-rzrqb`
