@@ -1,9 +1,8 @@
 import mongoose from 'mongoose';
 import request from 'supertest';
-import {app} from "../../app";
-import {Ticket} from '../../../models/ticket';
+import { app } from "../../app";
+import { Ticket } from '../../../models/ticket';
 import { Order, OrderStatus } from '../../../models/order';
-import jwt from 'jsonwebtoken';
 
 it('has a route handler listening to /api/orders for post requests', async () => {
   const response = await request(app)
@@ -116,3 +115,5 @@ it('reserves a ticket', async () => {
   expect(orders[0].expiresAt).toBeDefined();
   expect(orders[0].ticket).toBeDefined();
 });
+
+it.todo('emits an order created event');

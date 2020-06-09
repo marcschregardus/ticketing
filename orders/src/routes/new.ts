@@ -1,9 +1,9 @@
 import mongoose from 'mongoose';
 import express, {Request, Response} from 'express';
-import {BadRequestError, NotFoundError, OrderStatus, requireAuth, validateRequest} from '@schregardus/common';
-import {body} from 'express-validator';
-import {Ticket} from '../../models/ticket';
-import {Order} from '../../models/order';
+import { BadRequestError, NotFoundError, OrderStatus, requireAuth, validateRequest} from '@schregardus/common';
+import { body } from 'express-validator';
+import { Ticket } from '../../models/ticket';
+import { Order } from '../../models/order';
 
 const router = express.Router();
 
