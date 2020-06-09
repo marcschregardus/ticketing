@@ -52,6 +52,7 @@ it('returns a 404 if the order doesnt exist', async () => {
 it('marks an order as cancelled', async () => {
   // Create a ticket with Ticket Model
   const ticket = Ticket.build({
+    id: mongoose.Types.ObjectId().toHexString(),
     title: 'concert',
     price: 20
   });
@@ -81,6 +82,7 @@ it('marks an order as cancelled', async () => {
 
 it('emits an order cancelled event', async () => {
   const ticket = Ticket.build({
+    id: mongoose.Types.ObjectId().toHexString(),
     title: 'concert',
     price: 20
   });
