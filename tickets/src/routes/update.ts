@@ -1,10 +1,15 @@
 import express, { Request, Response } from 'express';
 import { body } from 'express-validator';
-import { requireAuth, validateRequest, NotFoundError, NotAuthorizedError } from '@schregardus/common';
+import {
+  requireAuth,
+  validateRequest,
+  NotFoundError,
+  NotAuthorizedError,
+  BadRequestError
+} from '@schregardus/common';
 import { Ticket } from '../models/ticket';
 import { TicketUpdatedPublisher } from '../events/publishers/ticket-updated-publisher';
 import { natsWrapper } from '../nats-wrapper';
-import {currentUser} from "../../../common/src";
 
 const router = express.Router();
 
@@ -25,6 +30,10 @@ router.put('/api/tickets/:id',
 
   if (!ticket) {
     throw new NotFoundError();
+  }
+
+  if (ticket.orderId) {
+    throw new BadRequestError('Cannot edit a reserved ticket');
   }
 
   if (ticket.userId !== req.currentUser!.id) {
