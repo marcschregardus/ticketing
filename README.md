@@ -136,3 +136,9 @@ _Note: to have the repo private, there is a monthly cost associated - $7 per mon
 - Data in memory, so just list pods and delete nat pod (and skaffold will start it up again). I.e.
 - `kubectl get pods`
 - `kubectl delete pod nats-depl-5b5b8cd86c-rzrqb`
+
+# Stripe Payments Setup
+
+Store the `secret key` (from the Developers -> API key section in Strip)
+
+- `kubectl create secret generic stripe-secret --from-literal STRIPE_KEY=******`

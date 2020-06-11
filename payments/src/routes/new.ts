@@ -10,6 +10,7 @@ import {
 } from '@schregardus/common';
 import { Order } from '../models/order';
 import mongoose from "mongoose";
+import { stripe } from '../stripe';
 
 const router = express.Router();
 
@@ -44,7 +45,13 @@ router.post('/api/payments',
       throw new BadRequestError('Cannot pay for a cancelled order');
     }
 
-    res.send({ success: true });
+    await stripe.charges.create({
+      currency: 'aud',
+      amount: order.price * 100, // convert to cents
+      source: token,
+    });
+
+    res.status(201).send({ success: true });
 });
 
 export { router as createChargeRouter };
