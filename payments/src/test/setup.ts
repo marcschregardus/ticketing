@@ -13,7 +13,10 @@ declare global {
 let mongo: any;
 
 jest.mock('../nats-wrapper');
-jest.mock('../stripe');
+// jest.mock('../stripe');
+
+// TODO this needs to be in a local environment variable rather than hard coded here
+process.env.STRIPE_KEY = 'sk_test_51GslrULnrMQBw76poYjQkxOoJCuqHELu6VoQDM5kveSCQJUuInpIMQnt5lKG40uwczo5cPBET3ZyflYcHmiZFNrA00SEHIj9hf';
 
 beforeAll(async () => {
     process.env.JWT_KEY = 'asfasfdsadf';
