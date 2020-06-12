@@ -144,3 +144,25 @@ Store the `secret key` (from the Developers -> API key section in Stripe)
 - `kubectl create secret generic stripe-secret --from-literal STRIPE_KEY=******`
 - Sample CC numbers - [https://stripe.com/docs/testing](https://stripe.com/docs/testing)
 - Easy to use `4242424242424242` - Visa, CVC any 3 digits and any date in the future for expiry
+
+# Digital Ocean Setup
+
+- Create a cluster (called `ticketing`)
+- Install the Digital Ocean command tool [https://github.com/digitalocean/doctl](https://github.com/digitalocean/doctl)
+- `brew install doctl`
+- The command is `doctl` - run to see options (and check if installed correctly)
+- Authenticate by generating a new token at [https://cloud.digitalocean.com/account/api/tokens](https://cloud.digitalocean.com/account/api/tokens)
+- run `doctl auth init` and paste token
+- Get `kubectl` context with `doctl kubernetes cluster kubeconfig save ticketing` (this assumes the cluster name is `ticketing`)
+- The above command will set the context to the digital ocean cluster (rather than the docker desktop)
+- Check number of nodes (should be 3) with `kubectl get nodes`
+- To list out all the contexts we have access to use `kubectl config view`. Check for the `contexts` node and provide the name. I.e.
+  - `do-sgp1-ticketing` - Digital Ocean context
+  - `docker-desktop` (or `docker-for-desktop`) - Local Docker Desktop context
+- To switch back to the local context (say), use `kubectl config use-context docker-desktop`
+- Alternatively, use the Docker Desktop -> Kubernetes selection option.
+- Create 2 required secrets (ensure you're in the correct context)
+  - `kubectl create secret generic stripe-secret --from-literal STRIPE_KEY=******`
+  - `kubectl create secret generic jwt-secret --from-literal=JWT_KEY=asdf`
+- Setup Ingress NGINX (for Digital Ocean)
+  - `kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-0.33.0/deploy/static/provider/do/deploy.yaml`
