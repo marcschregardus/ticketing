@@ -139,6 +139,8 @@ _Note: to have the repo private, there is a monthly cost associated - $7 per mon
 
 # Stripe Payments Setup
 
-Store the `secret key` (from the Developers -> API key section in Strip)
+Store the `secret key` (from the Developers -> API key section in Stripe)
 
 - `kubectl create secret generic stripe-secret --from-literal STRIPE_KEY=******`
+- Sample CC numbers - [https://stripe.com/docs/testing](https://stripe.com/docs/testing)
+- Easy to use `4242424242424242` - Visa, CVC any 3 digits and any date in the future for expiry
