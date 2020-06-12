@@ -37,8 +37,8 @@ const LandingPage = ({ currentUser, tickets }) => {
 
 // Server side calls (mostly!)
 LandingPage.getInitialProps = async (context, client, currentUser) => {
+    console.log('Loading index - getting ticket data');
     const { data } = await client.get('/api/tickets');
-
     return { tickets: data };
 };
 
