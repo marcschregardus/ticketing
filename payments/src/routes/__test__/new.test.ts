@@ -4,6 +4,7 @@ import mongoose from 'mongoose';
 import { Order } from '../../models/order';
 import { OrderStatus } from '@schregardus/common';
 import { stripe } from '../../stripe';
+import { Payment } from '../../models/payment';
 
 it('has a route handler listening to /api/payments for post requests', async () => {
     const response = await request(app)
@@ -166,4 +167,11 @@ it('returns a 204 with valid inputs', async () => {
 
   expect(stripeCharge).toBeDefined();
   expect(stripeCharge!.currency).toEqual('aud');
+
+  const payment = await Payment.findOne({
+    orderId: order.id,
+    stripeId: stripeCharge!.id,
+  });
+
+  expect(payment).not.toBeNull();
 });
