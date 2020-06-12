@@ -1,5 +1,11 @@
 common
 
+# Mac only
+.DS_store
+
+# IntelliJ
+.idea
+
 # Logs
 logs
 *.log
